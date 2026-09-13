@@ -530,7 +530,7 @@ export default function App() {
                 {activeLanguage === 'ar' ? 'يومك أجمل مع كونتيغو' : 'Your day is better with Contigo'}
               </h2>
               <p className="text-xs text-gray-400 font-sans tracking-widest font-medium">
-                {activeLanguage === 'ar' ? 'قهوتك في المدينة ☕' : 'Your ultimate coffee cup in town ☕'}
+                {activeLanguage === 'ar' ? 'مرحبا بيكم ☕' : 'Welcome to Contigo ☕'}
               </p>
             </motion.div>
 
