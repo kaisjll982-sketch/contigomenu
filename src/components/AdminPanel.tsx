@@ -20,9 +20,11 @@ import {
   Info,
   Camera,
   Upload,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Printer
 } from 'lucide-react';
 import { MenuItem, CafeSettings } from '../types';
+import { PosterGenerator } from './PosterGenerator';
 
 const STOCK_PRESETS = [
   {
@@ -190,7 +192,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
   const [loginError, setLoginError] = useState('');
 
   // Sub tabs inside the admin panel
-  const [activeAdminTab, setActiveAdminTab] = useState<'menu' | 'settings' | 'moments'>('menu');
+  const [activeAdminTab, setActiveAdminTab] = useState<'menu' | 'settings' | 'moments' | 'poster'>('menu');
 
   // New item formulation
   const [isAddingItem, setIsAddingItem] = useState(false);
@@ -506,6 +508,17 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                   }`}
                 >
                   {activeLanguage === 'ar' ? 'إدارة المعرض' : 'Manage Photo Gallery'}
+                </button>
+                <button
+                  onClick={() => setActiveAdminTab('poster')}
+                  className={`px-3 py-1.5 rounded-md text-xs font-semibold cursor-pointer transition-all flex items-center gap-1.5 ${
+                    activeAdminTab === 'poster'
+                      ? 'bg-gradient-to-r from-amber-500 to-amber-400 text-black font-extrabold shadow-[0_0_10px_rgba(245,158,11,0.5)]'
+                      : 'text-amber-300 hover:text-white'
+                  }`}
+                >
+                  <Printer className="w-3.5 h-3.5" />
+                  <span>{activeLanguage === 'ar' ? 'أفيش QR للطباعة' : 'Printable QR Poster'}</span>
                 </button>
               </div>
 
@@ -1033,6 +1046,14 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                   )}
                 </AnimatePresence>
               </div>
+            )}
+
+            {/* TAB CONTENT: 4. PRINTABLE QR POSTER STUDIO */}
+            {activeAdminTab === 'poster' && (
+              <PosterGenerator
+                settings={settings}
+                activeLanguage={activeLanguage}
+              />
             )}
           </motion.div>
         )}
