@@ -37,6 +37,8 @@ import { WiFiCard } from './components/WiFiCard';
 import { SocialLinks } from './components/SocialLinks';
 import { AdminPanel } from './components/AdminPanel';
 import { AIWaiter } from './components/AIWaiter';
+import { PWAInstallButton } from './components/PWAInstallButton';
+import { OfflineIndicator } from './components/OfflineIndicator';
 import { generateAndShareStory } from './utils/storyCreator';
 import { collection, doc, onSnapshot, setDoc, deleteDoc } from 'firebase/firestore';
 import { db, handleFirestoreError, OperationType } from './firebase';
@@ -636,6 +638,15 @@ export default function App() {
                         </span>
                       </div>
                     </div>
+                  </div>
+
+                  {/* 1-Click PWA Installation Card */}
+                  <div className="my-2">
+                    <PWAInstallButton
+                      activeLanguage={activeLanguage}
+                      variant="button"
+                      onInstalledToast={(msg) => triggerToast(msg, 'success')}
+                    />
                   </div>
 
                   {/* HIGH-RES HORIZONTAL FOOD SEPARATIONS SLIDER */}
@@ -2039,6 +2050,7 @@ export default function App() {
         </footer>
 
         <AIWaiter activeLanguage={activeLanguage} />
+        <OfflineIndicator activeLanguage={activeLanguage} />
       </div>
     </>
   );

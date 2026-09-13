@@ -9,7 +9,7 @@ async function startServer() {
   const app = express();
   const PORT = 3000;
 
-  const isProduction = process.env.NODE_ENV !== "development";
+  const isProduction = process.env.NODE_ENV === "production";
   console.log(`Application environment detected: ${isProduction ? "PRODUCTION (Shared)" : "DEVELOPMENT"}`);
 
   // Middleware to parse JSON post bodies
@@ -98,28 +98,12 @@ async function startServer() {
 
   // Vite middleware setup for Development or static asset loading for Production
   if (!isProduction) {
-    const viteModule = await import("vite");
-    const vite = await viteModule.createServer({
+    const { createServer: createViteServer } = await import("vite");
+    const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
     });
     app.use(vite.middlewares);
-
-    // Catch-all to serve transform-injected index.html in development to prevent 404s
-    const fs = await import("fs");
-    app.get("*", async (req, res, next) => {
-      if (req.originalUrl.startsWith("/api") || req.originalUrl.startsWith("/@")) {
-        return next();
-      }
-      try {
-        const templatePath = path.resolve(process.cwd(), "index.html");
-        let template = fs.readFileSync(templatePath, "utf-8");
-        template = await vite.transformIndexHtml(req.originalUrl, template);
-        res.status(200).set({ "Content-Type": "text/html" }).end(template);
-      } catch (e) {
-        next(e);
-      }
-    });
   } else {
     // In production, serve compiled static files from dist/ folder
     const distPath = path.join(process.cwd(), "dist");

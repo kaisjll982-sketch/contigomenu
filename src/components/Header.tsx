@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Sparkles, Languages, Bell } from 'lucide-react';
 import { CafeSettings } from '../types';
+import { PWAInstallButton } from './PWAInstallButton';
 
 interface HeaderProps {
   settings: CafeSettings;
@@ -30,13 +31,17 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="mr-1">{activeLanguage === 'ar' ? 'مفتوح الآن' : 'Open Now'}</span>
           </div>
 
-          <button
-            onClick={() => setActiveLanguage(activeLanguage === 'ar' ? 'en' : 'ar')}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-gold-500/30 bg-gold-950/20 text-gold-400 hover:text-gold-300 hover:border-gold-500/60 hover:bg-gold-500/10 transition-all text-xs font-medium cursor-pointer"
-          >
-            <Languages className="w-3.5 h-3.5" />
-            <span>{activeLanguage === 'ar' ? 'English' : 'العربية'}</span>
-          </button>
+          <div className="flex items-center gap-2.5">
+            <PWAInstallButton activeLanguage={activeLanguage} variant="header" />
+
+            <button
+              onClick={() => setActiveLanguage(activeLanguage === 'ar' ? 'en' : 'ar')}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-gold-500/30 bg-gold-950/20 text-gold-400 hover:text-gold-300 hover:border-gold-500/60 hover:bg-gold-500/10 transition-all text-xs font-medium cursor-pointer"
+            >
+              <Languages className="w-3.5 h-3.5" />
+              <span>{activeLanguage === 'ar' ? 'English' : 'العربية'}</span>
+            </button>
+          </div>
         </div>
 
         {/* Exquisite Logo recreation of the exact circular emblem uploaded */}

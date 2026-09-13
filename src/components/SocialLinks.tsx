@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { Instagram, Facebook, MapPin, Phone, MessageSquareShare, QrCode, Copy, Check, ExternalLink } from 'lucide-react';
 import { CafeSettings } from '../types';
 import { ContigoQRCode } from './ContigoQRCode';
+import { PWAInstallButton } from './PWAInstallButton';
 
 interface SocialLinksProps {
   settings: CafeSettings;
@@ -94,6 +95,9 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({ settings, activeLangua
           </motion.a>
         ))}
       </div>
+
+      {/* 1-Click PWA App Installation Card */}
+      <PWAInstallButton activeLanguage={activeLanguage} variant="button" />
 
       {/* Premium Dynamic QR Code Card & Direct Assistance Studio */}
       <ContigoQRCode activeLanguage={activeLanguage} />
