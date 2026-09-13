@@ -66,78 +66,11 @@ export const Header: React.FC<HeaderProps> = ({
                 referrerPolicy="no-referrer"
               />
             ) : (
-              <svg viewBox="0 0 200 200" className="w-full h-full p-2 select-none absolute inset-0 z-10">
-                <defs>
-                  {/* Gold gradient for maximum fidelity to the logo */}
-                  <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#FFD241" />
-                    <stop offset="50%" stopColor="#FFF1AA" />
-                    <stop offset="100%" stopColor="#B88200" />
-                  </linearGradient>
-                </defs>
-
-                {/* Top Ornate Filigree/Scroll design - Recreating the logo's classical flourishes */}
-                <g fill="none" stroke="url(#goldGrad)" strokeWidth="1.8" strokeLinecap="round">
-                  {/* Left wing curve */}
-                  <path d="M 45,98 C 42,75 50,55 70,45 C 80,40 100,50 90,60 C 80,70 65,60 65,55 C 65,50 78,45 85,48 M 46,92 C 55,75 68,78 68,66" />
-                  {/* Right wing curve */}
-                  <path d="M 155,98 C 158,75 150,55 130,45 C 120,40 100,50 110,60 C 120,70 135,60 135,55 C 135,50 122,45 115,48 M 154,92 C 145,75 132,78 132,66" />
-
-                  {/* Bottom Ornate scroll completing the circle frame */}
-                  <path d="M 45,115 C 42,138 52,158 72,168 C 85,174 100,165 92,155 C 85,145 72,152 75,158 C 78,164 90,165 98,166 L 102,166 C 110,165 122,164 125,158 C 128,152 115,145 108,155 C 100,165 115,174 128,168 C 148,158 158,138 155,115" />
-                  {/* Lower tiny leaves decoration */}
-                  <path d="M 90,175 C 95,182 100,185 100,185 C 100,185 105,182 110,175" strokeWidth="2" />
-                  <circle cx="100" cy="186" r="1.5" fill="url(#goldGrad)" />
-                </g>
-
-                {/* Artistic Coffee Cup, Saucer and rising dynamic flame-like steam in center */}
-                <g transform="translate(0, -6)">
-                  {/* Elegant central rising steam flame */}
-                  <path d="M 94,80 C 88,72 87,55 100,38 C 107,46 103,58 96,66 C 94,68 97,70 100,72 C 103,74 105,68 106,64 C 108,60 112,50 108,42 C 112,50 112,58 107,66 C 104,70 102,74 96,80 Z" fill="url(#goldGrad)" className="animate-pulse" />
-
-                  {/* Elegant Cup Outline with cross-hatch shading style matching logo */}
-                  <path d="M 76,82 L 124,82 C 124,103 114,112 100,112 C 86,112 76,103 76,82 Z" fill="#0c0c10" stroke="url(#goldGrad)" strokeWidth="2.5" />
-                  
-                  {/* Fine shading lines on cup bottom-right matching engraving look */}
-                  <path d="M 112,87 C 112,100 108,106 100,106" fill="none" stroke="url(#goldGrad)" strokeWidth="0.8" strokeDasharray="2,2" />
-
-                  {/* Elegant Cup handle */}
-                  <path d="M 124,90 C 132,90 133,98 124,101" fill="none" stroke="url(#goldGrad)" strokeWidth="2" strokeLinecap="round" />
-
-                  {/* Saucer */}
-                  <path d="M 70,115 L 130,115 C 122,121 78,121 70,115 Z" fill="#0c0c10" stroke="url(#goldGrad)" strokeWidth="1.8" />
-                </g>
-
-                {/* Bold Serif CONTIGO Brand text inside the center-bottom of emblem */}
-                <text
-                  x="100"
-                  y="136"
-                  textAnchor="middle"
-                  fill="url(#goldGrad)"
-                  fontFamily="'Cairo', 'Space Grotesk', serif"
-                  fontWeight="900"
-                  fontSize="18.5"
-                  letterSpacing="1.2"
-                  className="font-bold tracking-wider"
-                >
-                  CONTIGO
-                </text>
-
-                {/* Smaller clean RESTAURANT subtitle */}
-                <text
-                  x="100"
-                  y="148"
-                  textAnchor="middle"
-                  fill="url(#goldGrad)"
-                  fontFamily="system-ui, sans-serif"
-                  fontWeight="700"
-                  fontSize="6"
-                  letterSpacing="2.8"
-                  opacity="0.9"
-                >
-                  RESTAURANT
-                </text>
-              </svg>
+              <img
+                src="/contigo-logo.png"
+                alt="Contigo Logo"
+                className="w-full h-full object-cover rounded-full select-none"
+              />
             )}
           </div>
         </div>

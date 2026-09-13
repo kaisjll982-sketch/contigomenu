@@ -510,13 +510,13 @@ export default function App() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8, type: 'spring' }}
-              className="relative w-44 h-44 mb-8 flex items-center justify-center select-none bg-gradient-to-br from-[#0a0a0d] to-[#121217] rounded-full border-2 border-gold-500 shadow-[0_0_50px_rgba(255,193,7,0.4)]"
+              className="relative w-44 h-44 mb-8 flex items-center justify-center select-none bg-black rounded-full border-2 border-gold-500 shadow-[0_0_50px_rgba(255,193,7,0.4)] overflow-hidden"
             >
-              <div className="text-center">
-                <span className="text-4xl animate-pulse block mb-1">☕</span>
-                <span className="text-gold-400 font-serif font-black text-2xl tracking-wider block">CONTIGO</span>
-                <span className="text-[7px] text-gold-500/80 font-mono tracking-[4px] uppercase block">RESTAURANT</span>
-              </div>
+              <img
+                src="/contigo-logo.png"
+                alt="Contigo Logo"
+                className="w-full h-full object-cover select-none"
+              />
             </motion.div>
 
             {/* Typography */}
