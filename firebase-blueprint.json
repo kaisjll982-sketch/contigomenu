@@ -1,0 +1,97 @@
+{
+  "entities": {
+    "MenuItem": {
+      "title": "MenuItem",
+      "description": "An item in the cafe menu",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "The unique identifier of the item" },
+        "nameEn": { "type": "string", "description": "English name" },
+        "nameAr": { "type": "string", "description": "Arabic name" },
+        "descriptionEn": { "type": "string", "description": "English description" },
+        "descriptionAr": { "type": "string", "description": "Arabic description" },
+        "price": { "type": "number", "description": "Price in Dinars" },
+        "category": { "type": "string", "enum": ["hot", "cold", "dessert", "food"], "description": "Category name" },
+        "isAvailable": { "type": "boolean", "description": "Is in stock" },
+        "iconType": { "type": "string", "description": "Icon class indicator" },
+        "imageUrl": { "type": "string", "description": "Optional illustration URL" }
+      },
+      "required": ["id", "nameEn", "nameAr", "price", "category", "isAvailable", "iconType"]
+    },
+    "WiFiDetails": {
+      "title": "WiFiDetails",
+      "description": "WiFi configuration details",
+      "type": "object",
+      "properties": {
+        "ssid": { "type": "string" },
+        "password": { "type": "string" },
+        "security": { "type": "string", "enum": ["WPA", "WEP", "None"] }
+      },
+      "required": ["ssid", "security"]
+    },
+    "CafeSettings": {
+      "title": "CafeSettings",
+      "description": "Global cafe settings and features",
+      "type": "object",
+      "properties": {
+        "nameAr": { "type": "string" },
+        "nameEn": { "type": "string" },
+        "taglineAr": { "type": "string" },
+        "taglineEn": { "type": "string" },
+        "wifi": { "$ref": "WiFiDetails" },
+        "instagram": { "type": "string" },
+        "facebook": { "type": "string" },
+        "locationUrl": { "type": "string" },
+        "phone": { "type": "string" },
+        "announcementAr": { "type": "string" },
+        "announcementEn": { "type": "string" },
+        "adminPassphrase": { "type": "string" },
+        "customLogoUrl": { "type": "string" }
+      },
+      "required": ["nameAr", "nameEn", "wifi", "instagram", "facebook", "locationUrl", "phone", "announcementAr", "announcementEn"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "Guest book review representation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "author": { "type": "string" },
+        "rating": { "type": "integer" },
+        "comment": { "type": "string" },
+        "date": { "type": "string", "format": "date" }
+      },
+      "required": ["id", "author", "rating", "comment", "date"]
+    },
+    "Moment": {
+      "title": "Moment",
+      "description": "Cozy photography moment in gallery",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "src": { "type": "string" },
+        "captionAr": { "type": "string" },
+        "captionEn": { "type": "string" }
+      },
+      "required": ["id", "src", "captionAr", "captionEn"]
+    }
+  },
+  "firestore": {
+    "menu/{itemId}": {
+      "schema": "MenuItem",
+      "description": "All gourmet menu items available at the cafe"
+    },
+    "settings/{settingsId}": {
+      "schema": "CafeSettings",
+      "description": "Global settings for the cafe including WiFi and branding"
+    },
+    "reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "Guest reviews submitted via the UI"
+    },
+    "moments/{momentId}": {
+      "schema": "Moment",
+      "description": "Beautiful image gallery captured moments"
+    }
+  }
+}

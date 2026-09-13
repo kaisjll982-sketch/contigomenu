@@ -1,0 +1,6 @@
+{
+  "name": "Contigo Coffee Menu",
+  "description": "Interactive and customizable menu for Contigo Cafe with WiFi access, social connections, and admin panel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
