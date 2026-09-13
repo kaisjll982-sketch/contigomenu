@@ -18,10 +18,8 @@ export const PWAInstallButton: React.FC<PWAInstallButtonProps> = ({
   const [showGuideModal, setShowGuideModal] = useState(false);
   const [installSuccess, setInstallSuccess] = useState(false);
 
-  // If already installed as standalone PWA, do not show button
-  if (isInstalled && !installSuccess) {
-    return null;
-  }
+  // Always show button unless user literally just completed installation in this session and sees the success state
+  // We keep it visible so users can re-open instructions or install on desktop/mobile even inside iframes
 
   const handleInstallClick = async () => {
     if (isIOS) {
@@ -56,16 +54,14 @@ export const PWAInstallButton: React.FC<PWAInstallButtonProps> = ({
         <button
           id="pwa-install-header-btn"
           onClick={handleInstallClick}
-          className="relative group flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-600/30 to-amber-500/20 hover:from-amber-600/50 hover:to-amber-500/40 border border-amber-500/50 text-amber-200 text-xs font-semibold shadow-sm backdrop-blur-md transition-all active:scale-95"
-          title={isAr ? 'تثبيت التطبيق على جهازك بنقرة واحدة' : 'Install PWA with one click'}
+          className="relative group flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-black font-extrabold text-xs shadow-[0_0_15px_rgba(245,158,11,0.4)] hover:shadow-[0_0_20px_rgba(245,158,11,0.6)] border border-amber-300 transition-all active:scale-95 cursor-pointer"
+          title={isAr ? 'تثبيت تطبيق Contigo على الهاتف أو الحاسوب' : 'Install Contigo App'}
         >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+          <span className="p-1 rounded-md bg-black/15">
+            <Download className="w-3.5 h-3.5 text-black stroke-[3]" />
           </span>
-          <Download className="w-3.5 h-3.5 text-amber-400 group-hover:animate-bounce" />
-          <span className="whitespace-nowrap">
-            {isAr ? 'تثبيت التطبيق' : 'Install App'}
+          <span className="whitespace-nowrap font-sans font-bold">
+            {isAr ? '📲 تثبيت التطبيق' : '📲 Install App'}
           </span>
         </button>
       )}
